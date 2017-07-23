@@ -18,11 +18,16 @@ function ajaxSample1(){
 function ajaxSample2(){
  	location.href="sample/openSampleList2.do";	
 }
+
+function ajaxSample3(){
+ 	location.href="sample/openSampleList3.do";	
+}
 </script>
 </head>
 <body onload="onload()">
 <h1>index.jsp Page</h1>
 <input type="button" value="ajaxSample1" onclick="ajaxSample1()">
 <input type="button" value="ajaxSample2" onclick="ajaxSample2()">
+<input type="button" value="ajaxSample3" onclick="ajaxSample3()">
 </body>
 </html>
