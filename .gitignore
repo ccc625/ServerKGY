@@ -15,3 +15,5 @@ androidServer/Servers/.settings/org.eclipse.wst.server.core.prefs
 androidServer/Servers/
 .settings/
 .metadata/
+.settings/
+src/main/webapp/
