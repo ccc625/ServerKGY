@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
@@ -82,14 +83,10 @@ public class SampleController {
 	//ajax end
 	//ajax3 start
 	@RequestMapping(value="/openSampleList3.do")
-	public ModelAndView openSampleAjax3(Map<String,Object> commandMap) throws Exception{
-		ModelAndView mav = new ModelAndView();
-		log.debug("인터셉트 시작");
-		//List<Map<String,Object>> list = sampleService.selectEmpList(commandMap);
-		//mav.addObject("list",list);
-		mav.setViewName("home4");
-		
-		return mav;
+	public String openSampleAjax3(Map<String,Object> model,HttpServletRequest request,HttpServletResponse response) throws Exception{
+		request.setAttribute("msg", "aa");
+		model.put("msg", "bb");
+		return "sampleView";
 	}
 	
 	@RequestMapping(value="/ajaxSatrt3.do",method=RequestMethod.GET)
