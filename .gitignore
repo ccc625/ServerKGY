@@ -10,3 +10,5 @@ pom.xml
 .settings/org.springframework.ide.eclipse.beans.core.prefs
 .settings/org.springframework.ide.eclipse.core.prefs
 .springBeans
+.settings/
+src/main/webapp/
