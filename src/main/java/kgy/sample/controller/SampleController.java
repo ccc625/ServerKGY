@@ -10,10 +10,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import kgy.common.vo.CommonVO;
 import kgy.sample.service.SampleService;
 //import kgy.sample.vo.EmpVO;
+import kgy.sample.vo.EmpVO;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -106,4 +109,28 @@ public class SampleController {
 		    return modelAndView;
 	}	
 	//end
+	//ajax3 start
+	@RequestMapping(value="/openSampleList4.do")
+	@ResponseBody
+	public CommonVO openSampleAjax4(Map<String,Object> model,HttpServletRequest request,HttpServletResponse response) throws Exception{
+		CommonVO vo = new CommonVO();
+		EmpVO param = new EmpVO();
+		List<EmpVO> list = new ArrayList<EmpVO>();
+//		Map<String,Object> commandMap = new HashMap<String, Object>();
+		param.setAge("112");
+		list.add(param);
+		param.setAge("114");
+		list.add(param);
+		vo.setResult(list);
+		try {
+//			list = sampleService.selectEmpVOList();
+			
+		} catch (Exception e) {
+			// TODO: handle exception	
+			vo.setSuccess(false);
+			vo.setMsg(e.getMessage());
+		}
+		
+		return vo;
+	}
 }
