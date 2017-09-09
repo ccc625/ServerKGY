@@ -10,3 +10,8 @@ pom.xml
 .settings/org.springframework.ide.eclipse.beans.core.prefs
 .settings/org.springframework.ide.eclipse.core.prefs
 .springBeans
+androidServer/.metadata/
+androidServer/Servers/.settings/org.eclipse.wst.server.core.prefs
+androidServer/Servers/
+.settings/
+.metadata/
