@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kgy.common.vo.CommonVO;
 import kgy.make.service.CommonService;
@@ -33,6 +34,8 @@ public class MakeController {
 	 * @return
 	 * @throws Exception
 	 */
+	@RequestMapping(value="/getCommonList.do")
+	@ResponseBody
 	public CommonVO getCommonList(HttpServletRequest request,HttpServletResponse response,String upperKey) throws Exception{
 		//공통 VO 선언
 		CommonVO commonVO = new CommonVO();
