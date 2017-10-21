@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kgy.common">
+	
+	<select id="selectListCommon" resultType="comVO" parameterType="java.lang.String">
+		SELECT COMMON_CD
+			  ,COMMON_NM
+		      ,COMMON_SEQ
+		      ,COMMON_UPPER
+		  FROM TB_C_COMMON
+		 WHERE COMMON_UPPER = #{key}
+		 ORDER BY COMMON_SEQ
+	</select>
+
+</mapper>

@@ -6,6 +6,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="kgy.sample.vo.EmpVO" alias="empVO"/>
+		<typeAlias type="kgy.make.vo.ComVO" alias="comVO"/>
 	</typeAliases>
 	
 	
