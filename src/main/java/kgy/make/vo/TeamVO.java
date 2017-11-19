@@ -9,7 +9,7 @@ public class TeamVO {
 	private String alcohol;
 	private String al_num;
 	private String team_comment;
-	private String team_you_commenT;
+	private String team_you_comment;
 	private String team_img_cd;
 	private String team_reg_time;
 	private String team_phone;
@@ -56,11 +56,12 @@ public class TeamVO {
 	public void setTeam_comment(String team_comment) {
 		this.team_comment = team_comment;
 	}
-	public String getTeam_you_commenT() {
-		return team_you_commenT;
+	
+	public String getTeam_you_comment() {
+		return team_you_comment;
 	}
-	public void setTeam_you_commenT(String team_you_commenT) {
-		this.team_you_commenT = team_you_commenT;
+	public void setTeam_you_comment(String team_you_comment) {
+		this.team_you_comment = team_you_comment;
 	}
 	public String getTeam_img_cd() {
 		return team_img_cd;
