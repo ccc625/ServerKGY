@@ -20,6 +20,8 @@
     <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
     
     <bean class="org.springframework.web.servlet.view.BeanNameViewResolver" p:order="0" />
+    <bean name="sampleView" class="kgy.sample.view.SampleView"/>
+    
     
     <bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />    
 

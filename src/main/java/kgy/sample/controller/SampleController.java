@@ -10,15 +10,19 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import kgy.common.vo.CommonVO;
 import kgy.sample.service.SampleService;
 //import kgy.sample.vo.EmpVO;
+import kgy.sample.vo.EmpVO;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
@@ -82,14 +86,10 @@ public class SampleController {
 	//ajax end
 	//ajax3 start
 	@RequestMapping(value="/openSampleList3.do")
-	public ModelAndView openSampleAjax3(Map<String,Object> commandMap) throws Exception{
-		ModelAndView mav = new ModelAndView();
-		log.debug("인터셉트 시작");
-		//List<Map<String,Object>> list = sampleService.selectEmpList(commandMap);
-		//mav.addObject("list",list);
-		mav.setViewName("home4");
-		
-		return mav;
+	public String openSampleAjax3(Map<String,Object> model,HttpServletRequest request,HttpServletResponse response) throws Exception{
+		request.setAttribute("msg", "aa");
+		model.put("msg", "bb");
+		return "sampleView";
 	}
 	
 	@RequestMapping(value="/ajaxSatrt3.do",method=RequestMethod.GET)
@@ -109,4 +109,28 @@ public class SampleController {
 		    return modelAndView;
 	}	
 	//end
+	//ajax3 start
+	@RequestMapping(value="/openSampleList4.do")
+	@ResponseBody
+	public CommonVO openSampleAjax4(Map<String,Object> model,HttpServletRequest request,HttpServletResponse response) throws Exception{
+		CommonVO vo = new CommonVO();
+		EmpVO param = new EmpVO();
+		List<EmpVO> list = new ArrayList<EmpVO>();
+//		Map<String,Object> commandMap = new HashMap<String, Object>();
+		param.setAge("112");
+		list.add(param);
+		param.setAge("114");
+		list.add(param);
+		vo.setResult(list);
+		try {
+//			list = sampleService.selectEmpVOList();
+			
+		} catch (Exception e) {
+			// TODO: handle exception	
+			vo.setSuccess(false);
+			vo.setMsg(e.getMessage());
+		}
+		
+		return vo;
+	}
 }

@@ -22,6 +22,10 @@ function ajaxSample2(){
 function ajaxSample3(){
  	location.href="sample/openSampleList3.do";	
 }
+
+function ajaxSample4(){
+ 	location.href="sample/openSampleList4.do";	
+}
 </script>
 </head>
 <body onload="onload()">
@@ -29,5 +33,6 @@ function ajaxSample3(){
 <input type="button" value="ajaxSample1" onclick="ajaxSample1()">
 <input type="button" value="ajaxSample2" onclick="ajaxSample2()">
 <input type="button" value="ajaxSample3" onclick="ajaxSample3()">
+<input type="button" value="ajaxSample4" onclick="ajaxSample4()">
 </body>
 </html>
