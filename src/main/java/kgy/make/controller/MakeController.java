@@ -17,6 +17,7 @@ import kgy.common.vo.CommonVO;
 import kgy.make.service.CommonService;
 import kgy.make.service.MakeService;
 import kgy.make.vo.ComVO;
+import kgy.make.vo.TeamVO;
 
 @Controller
 @RequestMapping(value="/kgy/make")
@@ -64,4 +65,25 @@ public class MakeController {
 	}
 	
 	
+	@RequestMapping(value="/setMakeRegister.do", method=RequestMethod.POST)
+	@ResponseBody
+	public CommonVO setMakeRegister(TeamVO teamVO) throws Exception{
+		CommonVO commonVO = new CommonVO();
+		
+		
+		try {
+			
+			System.out.println(teamVO);
+			
+			
+		}catch(Exception e) {
+			
+			
+		}
+		
+		
+		
+		return commonVO;
+		
+	}
 }
