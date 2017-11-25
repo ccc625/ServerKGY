@@ -70,18 +70,25 @@ public class MakeController {
 	public CommonVO setMakeRegister(TeamVO teamVO) throws Exception{
 		CommonVO commonVO = new CommonVO();
 		
-		
 		try {
 			
 			System.out.println(teamVO);
+			int success = 0;
 			
+			success = makeService.setRegisterInfo(teamVO);
+			
+			if(success != 1) {
+				commonVO.setSuccess(false);
+				commonVO.setMsg("FAIL");
+			} else {
+				commonVO.setSuccess(true);
+				commonVO.setMsg("SUCCESS");
+			}
 			
 		}catch(Exception e) {
-			
-			
+			commonVO.setSuccess(false);
+			commonVO.setMsg("FAIL");
 		}
-		
-		
 		
 		return commonVO;
 		

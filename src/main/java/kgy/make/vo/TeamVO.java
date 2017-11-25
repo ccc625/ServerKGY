@@ -5,15 +5,22 @@ public class TeamVO {
 	private String team_no;
 	private String team_nm;
 	private String team_gender;
+	private String team_number;
 	private String area;
 	private String alcohol;
 	private String al_num;
 	private String team_comment;
 	private String team_you_comment;
 	private String team_img_cd;
-	private String team_reg_time;
 	private String team_phone;
 	private String img_file;
+	
+	public String getTeam_number() {
+		return team_number;
+	}
+	public void setTeam_number(String team_number) {
+		this.team_number = team_number;
+	}
 	public String getTeam_no() {
 		return team_no;
 	}
@@ -68,12 +75,6 @@ public class TeamVO {
 	}
 	public void setTeam_img_cd(String team_img_cd) {
 		this.team_img_cd = team_img_cd;
-	}
-	public String getTeam_reg_time() {
-		return team_reg_time;
-	}
-	public void setTeam_reg_time(String team_reg_time) {
-		this.team_reg_time = team_reg_time;
 	}
 	public String getTeam_phone() {
 		return team_phone;

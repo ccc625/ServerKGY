@@ -1,5 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kgy.make">
-
+	<insert id="insertTeamInfo" parameterType="teamVO">
+	INSERT INTO TB_B_TEAM(
+				TEAM_NO,
+				TEAM_NM,
+				TEAM_GENDER,
+				TEAM_NUMBER,
+				TEAM_AREA,
+				TEAM_ALCOHOL,
+				TEAM_AL_NUM,
+				TEAM_COMMENT,
+				TEAM_YOU_COMMENT,
+				TEAM_IMG_CD,
+				TEAM_REG_TIME,
+				TEAM_PHONE,
+				TEAM_USE_YN)
+			VALUES(#{team_no}
+				,#{team_nm}
+				,#{team_gender}
+				,#{team_number}
+				,#{area}
+				,#{alcohol}
+				,#{al_num}
+				,#{team_comment}
+				,#{team_you_comment}
+				,#{team_img_cd}
+				,NOW()
+				,#{team_phone}
+			    ,'Y'
+				)				
+	</insert>
+	
+	<insert id="insertImgFile" parameterType="teamVO">
+	INSERT INTO TB_B_FILE (
+				FILE_CD,
+				TEAM_NO,
+			 	TEAM_MAIN_YN,
+			 	IMG_FILE) 
+          VALUSE(
+		      #{team_img_cd},
+			  #{team_no},
+			  'Y',
+		      #{img_file}
+	)
+	</insert>
 </mapper>
