@@ -38,7 +38,7 @@
 				TEAM_NO,
 			 	TEAM_MAIN_YN,
 			 	IMG_FILE) 
-          VALUSE(
+          VALUES(
 		      #{team_img_cd},
 			  #{team_no},
 			  'Y',
