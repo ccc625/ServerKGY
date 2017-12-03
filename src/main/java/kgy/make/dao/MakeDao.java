@@ -12,7 +12,7 @@ import kgy.make.vo.TeamVO;
 @Repository("makeDAO")
 public class MakeDao extends AbstractDAO{
 	
-	private static final String namespace = "kgy.make";
+	private static final String namespace = "kgy.make.";
 	 
 	public int insertTeamInfo (TeamVO vo) {
 		return (Integer) insert(namespace+"insertTeamInfo", vo);
