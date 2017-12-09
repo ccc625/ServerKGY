@@ -20,9 +20,6 @@ public class SearchServiceImpl implements SearchService{
 	@Override
 	public List<TeamList> getTeamList(HashMap<String, Object> data) throws Exception {
 		// TODO Auto-generated method stub
-		if(!(data.get("search") != null && !data.get("search").equals(""))){
-			data.put("search", null);
-		}
 		return searchDao.selectListTeam(data);
 	}
 	

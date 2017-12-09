@@ -28,7 +28,7 @@
         			WHERE S2.TEAM_NO = #{id}) T3
         ON T1.TEAM_AREA = T3.TEAM_AREA
 	WHERE T1.TEAM_GENDER  <![CDATA[<>]]> T3.TEAM_GENDER
-		<if test="search != null">
+		<if test="search != '' ">
 			AND T1.TEAM_NM LIKE '%'||#{search}||'%'
 		</if>
 	ORDER BY T1.TEAM_REG_TIME DESC;

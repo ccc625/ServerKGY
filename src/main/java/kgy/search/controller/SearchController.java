@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kgy.common.vo.CommonVO;
 import kgy.search.service.SearchService;
@@ -22,9 +23,16 @@ public class SearchController {
 	SearchService service;
 	
 	@RequestMapping(value="getTeamList.do", method=RequestMethod.POST)
-	public CommonVO getTeamList(HashMap<String, Object> data){
+	@ResponseBody
+	public CommonVO getTeamList(String id,String search){
 		CommonVO commonVO = new CommonVO();
 		try {
+			HashMap<String, Object> data = new HashMap<String, Object>();
+			data.put("id", id);
+			if(search.equals("")){
+				data.put("search", "");
+			}
+			
 			List<TeamList> list = new ArrayList<TeamList>();
 			list = service.getTeamList(data);
 			commonVO.setResult(list);
