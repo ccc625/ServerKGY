@@ -1,5 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kgy.search">
+	<resultMap type="kgy.search.vo.TeamList" id="teamList">
+		<result column="TEAM_NO" property="teamNo"/>
+		<result column="TEAM_NM" property="teamNm"/>
+		<result column="GENDER" property="gender"/>
+		<result column="IMG_CD" property="imgCd"/>
+		<result column="IMG_FILE" property="imgFile"/>
+		<result column="AREA" property="area"/>
+		<result column="AREA_NM" property="areaNm"/>
+	</resultMap>
 
+	<select id="selectListTeam" parameterType="java.util.HashMap" resultMap="teamList">
+		SELECT T1.TEAM_NO
+		,T1.TEAM_NM
+        ,T1.TEAM_GENDER AS GENDER
+        ,T1.TEAM_IMG_CD AS IMG_CD
+        ,T2.IMG_FILE
+        ,T1.TEAM_AREA AS AREA
+        ,(SELECT S1.COMMON_CD FROM TB_C_COMMON S1 WHERE S1.COMMON_CD = T1.TEAM_AREA) AS AREA_NM
+	FROM TB_B_TEAM T1
+		INNER JOIN TB_B_FILE T2
+        ON T1.TEAM_IMG_CD = T2.FILE_CD
+        INNER JOIN (SELECT S2.TEAM_AREA
+        				  ,S2.TEAM_GENDER 
+        			FROM TB_B_TEAM S2 
+        			WHERE S2.TEAM_NO = #{id}) T3
+        ON T1.TEAM_AREA = T3.TEAM_AREA
+	WHERE T1.TEAM_GENDER  <![CDATA[<>]]> T3.TEAM_GENDER
+		<if test="search != null">
+			AND T1.TEAM_NM LIKE '%'||#{search}||'%'
+		</if>
+	ORDER BY T1.TEAM_REG_TIME DESC;
+	</select>
 </mapper>
