@@ -29,8 +29,8 @@ public class SearchController {
 		try {
 			HashMap<String, Object> data = new HashMap<String, Object>();
 			data.put("id", id);
-			if(search.equals("")){
-				data.put("search", "");
+			if(!search.equals("")){
+				data.put("search", search);
 			}
 			
 			List<TeamList> list = new ArrayList<TeamList>();
