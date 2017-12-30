@@ -11,6 +11,34 @@
 		<result column="AREA_NM" property="areaNm"/>
 	</resultMap>
 
+	<resultMap type="kgy.search.vo.TeamInfo" id="teamInfo">
+		<result column="TEAM_NO" property="teamNo"/>
+		<result column="TEAM_GENDER" property="teamGender"/>
+		<result column="TEAM_NM" property="teamNm"/>
+		<result column="TEAM_NUMBER" property="teamNumber"/>
+		<result column="TEAM_AREA" property="teamArea"/>
+		<result column="AREA_NM" property="areaNm"/>
+		<result column="TEAM_ALCOHOL" property="teamAlcohol"/>
+		<result column="ALCOHOL_NM" property="alcoholNm"/>
+		<result column="TEAM_AL_NUM" property="teamAlNum"/>
+		<result column="TEAM_COMMENT" property="teamComment"/>
+		<result column="TEAM_YOU_COMMENT" property="teamYouComment"/>
+		<result column="TEAM_IMG_CD" property="teamImgCd"/>
+		<result column="IMG_FILE" property="imgFile"/>
+		<result column="FILE_PATH" property="filePath"/>
+		<result column="IMG_NM" property="imgNm"/>
+	</resultMap>
+
+	<resultMap type="kgy.search.vo.BoardList" id="boardList">
+		<result column="TEAM_NO" property="boardNo"/>
+		<result column="TEAM_NO" property="boardUpper"/>
+		<result column="TEAM_NO" property="teamNo"/>
+		<result column="TEAM_NO" property="boardSeq"/>
+		<result column="TEAM_NO" property="boardComment"/>
+		<result column="TEAM_NO" property="boardRegTime"/>
+		<result column="TEAM_NO" property="lvl"/>
+	</resultMap>
+
 	<select id="selectListTeam" parameterType="java.util.HashMap" resultMap="teamList">
 		SELECT T1.TEAM_NO
 		,T1.TEAM_NM
@@ -32,5 +60,70 @@
 			AND T1.TEAM_NM LIKE '%'||#{search}||'%'
 		</if>
 	ORDER BY T1.TEAM_REG_TIME DESC;
+	</select>
+	
+	<select id="selectTeamInfo" parameterType="java.lang.String" resultMap="teamInfo">
+		SELECT T1.TEAM_NO,
+			   T1.TEAM_GENDER,
+		       T1.TEAM_NM,
+		       T1.TEAM_NUMBER,
+		       T1.TEAM_AREA,
+		       (SELECT S1.COMMON_NM FROM TB_C_COMMON S1 WHERE S1.COMMON_CD = T1.TEAM_AREA) AS AREA_NM,
+		       T1.TEAM_ALCOHOL,
+		       (SELECT S1.COMMON_NM FROM TB_C_COMMON S1 WHERE S1.COMMON_CD = T1.TEAM_ALCOHOL) AS ALCOHOL_NM,
+		       T1.TEAM_AL_NUM,
+		       T1.TEAM_COMMENT,
+		       T1.TEAM_YOU_COMMENT,
+		       T1.TEAM_IMG_CD,
+		       T2.IMG_FILE,
+		       T2.FILE_PATH,
+		       T2.IMG_NM
+		FROM TB_B_TEAM T1
+			LEFT OUTER JOIN TB_B_FILE T2
+		    ON T1.TEAM_IMG_CD = T2.FILE_CD
+		    AND T1.TEAM_NO = T2.TEAM_NO
+		WHERE T1.TEAM_USE_YN = 'Y'
+		   AND T2.TEAM_MAIN_YN = 'Y'
+		   AND T1.TEAM_NO = #{id}
+	</select>
+	
+	<insert id="insertBoardInfo" parameterType="boardInfoVO">
+		INSERT INTO TB_B_BOARD(
+			BOARD_NO,
+			<if test="boardUpper != null">
+				BOARD_UPPER,
+			</if>
+			TEAM_NO,
+			BOARD_SEQ,
+			BOARD_COMMENT,
+			BOARD_REG_TIME
+		) VALUES (
+			#{boardNo},
+			<if test="boardUpper != null">
+				#{boardUpper},
+			</if>
+			#{teamNo},
+			(SELECT COUNT(S1.*) + 1
+			 FROM TB_B_BOARD S1
+			WHERE S1.TEAM_NO = #{teamNo}
+			<if test="boardUpper != null">
+			   AND S1.BOARD_UPPER = #{boardUpper}
+			</if>
+			 ),
+			#{boardComment},
+			NOW()
+		)		
+	</insert>
+	
+	<select id="selectListBoard" parameterType="java.lang.String" resultMap="boardList">
+		SELECT BOARD_NO,
+				BOARD_UPPER,
+				TEAM_NO,
+				BOARD_SEQ,
+				BOARD_COMMENT,
+				BOARD_REG_TIME,
+				'0' AS LVL
+		  FROM TB_B_BOARD
+		 WHERE TEAM_NO = #{id}
 	</select>
 </mapper>

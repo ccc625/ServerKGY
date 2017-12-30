@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kgy.common.vo.CommonVO;
 import kgy.search.service.SearchService;
+import kgy.search.vo.BoardInfoVO;
+import kgy.search.vo.BoardList;
+import kgy.search.vo.TeamInfo;
 import kgy.search.vo.TeamList;
 
 @Controller
@@ -37,6 +40,60 @@ public class SearchController {
 			list = service.getTeamList(data);
 			commonVO.setResult(list);
 			commonVO.setSuccess(true);
+		} catch (Exception e) {
+			// TODO: handle exception
+			commonVO.setSuccess(false);
+			commonVO.setMsg(e.getMessage());
+		}
+		
+		return commonVO;
+	}
+	
+	@RequestMapping(value="getTeamInfo.do", method=RequestMethod.POST)
+	@ResponseBody
+	public CommonVO getTeamInfo(String id) throws Exception{
+		CommonVO commonVO = new CommonVO();
+		try {
+			List<TeamInfo> list = new ArrayList<TeamInfo>();
+			list.add(service.getTeamInfo(id));
+			commonVO.setResult(list);
+			commonVO.setSuccess(true);
+		} catch (Exception e) {
+			// TODO: handle exception
+			commonVO.setSuccess(false);
+			commonVO.setMsg(e.getMessage());
+		}
+		
+		return commonVO;
+	}
+	@RequestMapping(value="getBoardList.do", method=RequestMethod.POST)
+	@ResponseBody
+	public CommonVO getBoardList(String id) throws Exception{
+		CommonVO commonVO = new CommonVO();
+		try {
+			List<BoardList> list = new ArrayList<BoardList>();
+			list = service.getBoardInfoList(id);
+			commonVO.setResult(list);
+			commonVO.setSuccess(true);
+		} catch (Exception e) {
+			// TODO: handle exception
+			commonVO.setSuccess(false);
+			commonVO.setMsg(e.getMessage());
+		}
+		
+		return commonVO;
+	}
+	@RequestMapping(value="setBoardInfo.do", method=RequestMethod.POST)
+	@ResponseBody
+	public CommonVO setBoardInfo(BoardInfoVO info) throws Exception{
+		CommonVO commonVO = new CommonVO();
+		try {
+			int success = service.setBoardInfo(info);
+			if(success == 1){
+				commonVO.setSuccess(true);	
+			} else {
+				commonVO.setSuccess(false);
+			}			
 		} catch (Exception e) {
 			// TODO: handle exception
 			commonVO.setSuccess(false);

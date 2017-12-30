@@ -8,6 +8,7 @@
 		<typeAlias type="kgy.sample.vo.EmpVO" alias="empVO"/>
 		<typeAlias type="kgy.make.vo.ComVO" alias="comVO"/>
 		<typeAlias type="kgy.make.vo.TeamVO" alias="teamVO"/>
+		<typeAlias type="kgy.search.vo.BoardInfoVO" alias="boardInfoVO"/>
 	</typeAliases>
 	
 	
