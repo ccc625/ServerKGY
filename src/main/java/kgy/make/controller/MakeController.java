@@ -73,16 +73,19 @@ public class MakeController {
 		try {
 			
 			System.out.println(teamVO);
-			int success = 0;
 			
-			success = makeService.setRegisterInfo(teamVO);
+			String success = makeService.setRegisterInfo(teamVO);
 			
-			if(success != 1) {
+			if(success != null) {
+				commonVO.setSuccess(true);
+				List<String> list = new ArrayList<String>();
+				list.add(success);
+				commonVO.setResult(list);
+				commonVO.setMsg("SUCCESS");
+				
+			} else {
 				commonVO.setSuccess(false);
 				commonVO.setMsg("FAIL");
-			} else {
-				commonVO.setSuccess(true);
-				commonVO.setMsg("SUCCESS");
 			}
 			
 		}catch(Exception e) {

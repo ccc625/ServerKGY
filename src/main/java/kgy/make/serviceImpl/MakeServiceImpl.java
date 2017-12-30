@@ -16,7 +16,7 @@ public class MakeServiceImpl implements MakeService{
 	private MakeDao makeDao;
 
 	@Override
-	public int setRegisterInfo(TeamVO vo) throws Exception {
+	public String setRegisterInfo(TeamVO vo) throws Exception {
 		// TODO Auto-generated method stub
 		int success = 0;
 		String teamNo = CommonUtil.getUUID();
@@ -31,9 +31,9 @@ public class MakeServiceImpl implements MakeService{
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
-			success = 0;
+			teamNo = null;
 		}
-		return success;
+		return teamNo;
 	}
 	
 	
