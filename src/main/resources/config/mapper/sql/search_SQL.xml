@@ -128,4 +128,10 @@
 		  FROM TB_B_BOARD
 		 WHERE TEAM_NO = #{id}
 	</select>
+	
+	<update id="updateTeamInfo">
+		UPDATE TB_B_TEAM
+			SET TEAM_USE_YN = 'N'
+		  WHERE TEAM_USE_YN = 'Y'
+	</update>
 </mapper>

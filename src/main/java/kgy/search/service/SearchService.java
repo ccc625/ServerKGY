@@ -17,4 +17,6 @@ public interface SearchService {
 	int setBoardInfo(BoardInfoVO info)throws Exception;
 	
 	List<BoardList> getBoardInfoList(String id) throws Exception;
+	
+	void deleteTeamInfo() throws Exception;
 }

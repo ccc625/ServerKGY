@@ -45,6 +45,12 @@ public class SearchServiceImpl implements SearchService{
 		// TODO Auto-generated method stub
 		return searchDao.selectListBoard(id);
 	}
+
+	@Override
+	public void deleteTeamInfo() throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 	

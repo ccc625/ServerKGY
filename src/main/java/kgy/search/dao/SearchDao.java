@@ -31,4 +31,8 @@ public class SearchDao extends AbstractDAO{
 	public List<BoardList> selectListBoard(String id) throws Exception{
 		return (List<BoardList>) selectList(namespace+"selectListBoard",id);
 	}
+	
+	public void updateTeamInfo() throws Exception {
+		update(namespace+"updateTeamInfo","");
+	}
 }
