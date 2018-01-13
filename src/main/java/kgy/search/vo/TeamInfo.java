@@ -16,7 +16,16 @@ public class TeamInfo {
 	private String imgFile;
 	private String filePath;
 	private String imgNm;
+	private String regDate;
 	
+	
+	
+	public String getRegDate() {
+		return regDate;
+	}
+	public void setRegDate(String regDate) {
+		this.regDate = regDate;
+	}
 	public String getTeamNo() {
 		return teamNo;
 	}

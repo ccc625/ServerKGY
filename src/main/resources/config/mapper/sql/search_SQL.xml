@@ -27,6 +27,7 @@
 		<result column="IMG_FILE" property="imgFile"/>
 		<result column="FILE_PATH" property="filePath"/>
 		<result column="IMG_NM" property="imgNm"/>
+		<result column="REG_DATE" property="regDate"/>
 	</resultMap>
 
 	<resultMap type="kgy.search.vo.BoardList" id="boardList">
@@ -77,7 +78,8 @@
 		       T1.TEAM_IMG_CD,
 		       T2.IMG_FILE,
 		       T2.FILE_PATH,
-		       T2.IMG_NM
+		       T2.IMG_NM,
+		       DATE_FORMAT(T1.TEAM_REG_TIME, '%Y-%m-%d %H:%m:%S') AS REG_DATE
 		FROM TB_B_TEAM T1
 			LEFT OUTER JOIN TB_B_FILE T2
 		    ON T1.TEAM_IMG_CD = T2.FILE_CD
