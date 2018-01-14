@@ -13,7 +13,7 @@ public class TeamSceduler {
 	@Resource(name="searchDAO")
 	SearchDao searchDao;
 	
-	@Scheduled(cron = "0 0 11 * * ?")
+	@Scheduled(cron = "0 0 11 ? * *")
 	public void deleteTeamJob(){
 		try {
 			System.out.println("팀 정보 초기화 작업 시작~~");

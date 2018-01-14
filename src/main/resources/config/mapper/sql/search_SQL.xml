@@ -56,7 +56,9 @@
         			FROM TB_B_TEAM S2 
         			WHERE S2.TEAM_NO = #{id}) T3
         ON T1.TEAM_AREA = T3.TEAM_AREA
-	WHERE T1.TEAM_GENDER  <![CDATA[<>]]> T3.TEAM_GENDER
+	WHERE 
+		T1.TEAM_USE_YN = 'Y' AND
+		T1.TEAM_GENDER  <![CDATA[<>]]> T3.TEAM_GENDER
 		<if test="search != '' ">
 			AND T1.TEAM_NM LIKE '%'||#{search}||'%'
 		</if>
@@ -105,7 +107,7 @@
 				#{boardUpper},
 			</if>
 			#{teamNo},
-			(SELECT COUNT(S1.*) + 1
+			(SELECT COUNT(*) + 1
 			 FROM TB_B_BOARD S1
 			WHERE S1.TEAM_NO = #{teamNo}
 			<if test="boardUpper != null">
