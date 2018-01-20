@@ -38,7 +38,9 @@
 		<result column="BOARD_COMMENT" property="boardComment"/>
 		<result column="BOARD_REG_TIME" property="boardRegTime"/>
 		<result column="LVL" property="lvl"/>
+		<result column="TEAM_NM" property="teamNm"/>
 	</resultMap>
+	
 	<select id="selectListTeam" parameterType="java.util.HashMap" resultMap="teamList">
 		SELECT T1.TEAM_NO
 		,T1.TEAM_NM
@@ -119,15 +121,19 @@
 	</insert>
 	
 	<select id="selectListBoard" parameterType="java.lang.String" resultMap="boardList">
-		SELECT BOARD_NO,
-				BOARD_UPPER,
-				TEAM_NO,
-				BOARD_SEQ,
-				BOARD_COMMENT,
-				BOARD_REG_TIME,
-				'0' AS LVL
-		  FROM TB_B_BOARD
+			SELECT T1.BOARD_NO,
+				T1.BOARD_UPPER,
+				T1.TEAM_NO,
+				T1.BOARD_SEQ,
+				T1.BOARD_COMMENT,
+				T1.BOARD_REG_TIME,
+				'0' AS LVL,
+				T2.TEAM_NM 
+		  FROM TB_B_BOARD T1
+		  	INNER JOIN TB_B_TEAM T2
+		  	ON T1.TEAM_NO = T2.TEAM_NO
 		 WHERE TEAM_NO = #{id}
+		 	
 	</select>
 	
 	<update id="updateTeamInfo">

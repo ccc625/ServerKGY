@@ -8,7 +8,16 @@ public class BoardList {
 	private String boardComment;
 	private String boardRegTime;
 	private String lvl;
+	private String teamNm;
 	
+	
+	
+	public String getTeamNm() {
+		return teamNm;
+	}
+	public void setTeamNm(String teamNm) {
+		this.teamNm = teamNm;
+	}
 	public String getBoardNo() {
 		return boardNo;
 	}
