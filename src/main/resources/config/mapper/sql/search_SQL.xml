@@ -31,15 +31,14 @@
 	</resultMap>
 
 	<resultMap type="kgy.search.vo.BoardList" id="boardList">
-		<result column="TEAM_NO" property="boardNo"/>
-		<result column="TEAM_NO" property="boardUpper"/>
+		<result column="BOARD_NO" property="boardNo"/>
+		<result column="BOARD_UPPER" property="boardUpper"/>
 		<result column="TEAM_NO" property="teamNo"/>
-		<result column="TEAM_NO" property="boardSeq"/>
-		<result column="TEAM_NO" property="boardComment"/>
-		<result column="TEAM_NO" property="boardRegTime"/>
-		<result column="TEAM_NO" property="lvl"/>
+		<result column="BOARD_SEQ" property="boardSeq"/>
+		<result column="BOARD_COMMENT" property="boardComment"/>
+		<result column="BOARD_REG_TIME" property="boardRegTime"/>
+		<result column="LVL" property="lvl"/>
 	</resultMap>
-
 	<select id="selectListTeam" parameterType="java.util.HashMap" resultMap="teamList">
 		SELECT T1.TEAM_NO
 		,T1.TEAM_NM
