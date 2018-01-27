@@ -132,7 +132,7 @@
 		  FROM TB_B_BOARD T1
 		  	INNER JOIN TB_B_TEAM T2
 		  	ON T1.TEAM_NO = T2.TEAM_NO
-		 WHERE T1.TEAM_NO = #{id}
+		 WHERE T1.BOARD_UPPER = #{id}
 		 	
 	</select>
 	
